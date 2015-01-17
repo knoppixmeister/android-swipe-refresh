@@ -1,11 +1,11 @@
 package lv.bizapps.swiperefreshsample;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,15 +15,23 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Main extends Activity {
+public class Main extends ActionBarActivity {
 	protected ListView lv;
 	protected SwipeRefreshLayout srl;
 
+	@SuppressLint("InlinedApi")
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
 		srl = (SwipeRefreshLayout)findViewById(R.id.refresh);
+
+		srl.setColorScheme(android.R.color.holo_blue_bright,
+				            android.R.color.holo_green_light,
+				            android.R.color.holo_orange_light,
+				            android.R.color.holo_red_light);
+
 		srl.setOnRefreshListener(new OnRefreshListener() {
 			public void onRefresh() {
 				Log.e("AAA", "SRL ON REFRESH");
