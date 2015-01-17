@@ -46,7 +46,6 @@ public class Main extends ActionBarActivity {
 						}
 
 						runOnUiThread(new Runnable() {
-							@Override
 							public void run() {
 								srl.setRefreshing(false);
 							}
