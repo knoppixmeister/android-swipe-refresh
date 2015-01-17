@@ -27,7 +27,7 @@ public class Main extends ActionBarActivity {
 
 		srl = (SwipeRefreshLayout)findViewById(R.id.refresh);
 
-		srl.setColorScheme(android.R.color.holo_blue_bright,
+		srl.setColorScheme(	android.R.color.holo_blue_bright,
 				            android.R.color.holo_green_light,
 				            android.R.color.holo_orange_light,
 				            android.R.color.holo_red_light);
@@ -36,13 +36,23 @@ public class Main extends ActionBarActivity {
 			public void onRefresh() {
 				Log.e("AAA", "SRL ON REFRESH");
 
-				srl.setRefreshing(true);
-
-				srl.postDelayed(new Runnable() {
+				new Thread(new Runnable() {
 					public void run() {
-						srl.setRefreshing(false);
+						try {
+							Thread.sleep(5000);
+						}
+						catch(Exception e) {
+							e.printStackTrace();
+						}
+
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								srl.setRefreshing(false);
+							}
+						});
 					}
-				}, 3000);
+				}).start();
 			}
 		});
 
