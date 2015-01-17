@@ -1,2 +1,2 @@
 # android-swipe-refresh
-Android App Swipe Refresh Example
+Android App Example with v4 Swipe Refresh Component
